@@ -7,8 +7,10 @@ public class weatherBean {
 	private String countryStr;
 
 	private String cloudsStr;
-	
-	private String tempStr;
+
+	private String temp;
+
+	private String timeStr;
 
 	public weatherBean(String cityStr, String countryStr) {
 
@@ -17,38 +19,41 @@ public class weatherBean {
 
 	}
 
+	//////// CITY
 	public String getCityStr() {
 		return cityStr;
 	}
 
+	//////// COUNTRY
 	public String getCountryStr() {
 		return countryStr;
 	}
 
+	//////// CLOUDS
 	public String getCloudsStr() {
 		return cloudsStr;
 	}
 
-		public void setCloudsStr(String cloudsStr) {
+	public void setCloudsStr(String cloudsStr) {
 		this.cloudsStr = cloudsStr;
 	}
-		
-		public String getTempStr() {
-			return tempStr;
-		}
-		public void setgetTempStr(String tempStr) {
-		this.tempStr = tempStr;
+
+	//////// TIME
+	public String getTimeStr() {
+		return timeStr;
 	}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
+	public void setTimeStr(String timeStr) {
+		this.timeStr = timeStr;
+	}
+
+	//////// TEMP
+	public String getTemp() {
+		return temp;
+	}
+
+	public void setTemp(String string) {
+		this.temp = string;
+	}
 
 }

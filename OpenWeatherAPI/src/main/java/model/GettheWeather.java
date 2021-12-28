@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.DecimalFormat;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -68,15 +69,15 @@ public class Gettheweather {
 		// check that the XML response is OK by getting the Root element
 		System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
 
-		// Create a Node list that gets everything in and under the "clouds" tag
+		// Create a Node list that gets everything in a tag
 		NodeList nListclouds = doc.getElementsByTagName("clouds");
-		//NodeList nListTemp = doc.getElementsByTagName("temp");
+		NodeList nListtemperature = doc.getElementsByTagName("temperature");
+		NodeList nListlastupdate = doc.getElementsByTagName("lastupdate");
 
-
-		// loop through the content of the tag
-		for (int temp = 0; temp < nListclouds.getLength(); temp++) {
+		///////////// CLOUDS
+		for (int i = 0; i < nListclouds.getLength(); i++) {
 			// Save a node of the current list id
-			Node node = nListclouds.item(temp);
+			Node node = nListclouds.item(i);
 			if (node.getNodeType() == Node.ELEMENT_NODE) {
 
 				// set the current node as an Element
@@ -84,11 +85,71 @@ public class Gettheweather {
 				// get the content of an attribute in element
 				String XMLclouds = eElement.getAttribute("name");
 				// and print it
-				System.out.println(wBean.getCityStr() + " is now a " + XMLclouds);
+				//System.out.println("clouds " + wBean.getCityStr() + " is now a " + XMLclouds);
 				// save it
 				wBean.setCloudsStr(XMLclouds);
 
 			}
+
+		}
+		///////////// TEMP
+		for (int i = 0; i < nListtemperature.getLength(); i++) {
+			// Save a node of the current list id
+			Node node = nListtemperature.item(i);
+			if (node.getNodeType() == Node.ELEMENT_NODE) {
+
+				// set the current node as an Element
+				Element eElement = (Element) node;
+				// get the content of an attribute in element
+				String XMLtemperature = eElement.getAttribute("value");
+				// and print it
+				//System.out.println("temp " + wBean.getCityStr() + " is now a " + XMLtemperature);
+
+				// convert String to float
+				double tempInKelvin = Double.parseDouble(XMLtemperature);
+
+				double celciusConvert = -273.15;
+				//System.out.println("test: " + tempInKelvin + celciusConvert);
+				double tempInCelcius = tempInKelvin + celciusConvert;
+				//System.out.println("test: " + tempInCelcius);
+				//System.out.println("test tempInCelcius: " + tempInCelcius);
+
+				int places = 3;
+				DecimalFormat df = new DecimalFormat();
+				df.setMaximumFractionDigits(places);
+				//System.out.println("test 2 digits: " + df.format(tempInCelcius));
+
+				wBean.setTemp(df.format(tempInCelcius));
+
+			}
+		}
+		/////////////TIME
+		for (int i = 0; i < nListlastupdate.getLength(); i++) {
+			// Save a node of the current list id
+			Node node = nListlastupdate.item(i);
+			if (node.getNodeType() == Node.ELEMENT_NODE) {
+
+				// set the current node as an Element
+				Element eElement = (Element) node;
+				// get the content of an attribute in element
+				String XMLlastupdate = eElement.getAttribute("value");
+				// and print it
+				System.out.println("search " + wBean.getCityStr() + " time " + XMLlastupdate);
+				// save it
+				
+		        String[] arrayOfTime = XMLlastupdate.split("T");
+	
+		        String Date=arrayOfTime[0];
+		        
+		        String Time =arrayOfTime[1];
+		        	System.out.println(Date);
+		        	System.out.println(Time);
+		           
+				wBean.setTimeStr(arrayOfTime[1]);
+
+
+			}
+
 		}
 
 	}
