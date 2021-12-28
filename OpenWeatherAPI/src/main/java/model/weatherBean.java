@@ -11,6 +11,8 @@ public class weatherBean {
 	private String temp;
 
 	private String timeStr;
+	
+	private String icon;
 
 	public weatherBean(String cityStr, String countryStr) {
 
@@ -54,6 +56,15 @@ public class weatherBean {
 
 	public void setTemp(String string) {
 		this.temp = string;
+	}
+
+	////////ICON
+	public String getIcon() {
+		return icon;
+	}
+
+	public void setIcon(String icon) {
+		this.icon = icon;
 	}
 
 }

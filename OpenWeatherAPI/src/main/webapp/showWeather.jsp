@@ -34,6 +34,7 @@
 	String City = wBean.getCityStr();
 	String Temp = wBean.getTemp();
 	String Clouds = wBean.getCloudsStr();
+	String Icon = wBean.getIcon();
 	%>
 
 <!--
@@ -99,6 +100,7 @@
           <div class="col">
             <div class="card" style="width: 18rem;">
                 <img src="img/sun.jpg" class="card-img-top" alt="sun.jpg">
+                <%=Icon %>
                 <div class="card-body">
 			<h3><%="Weather in " + City%></h3>
 			<p class="card-text"><%="Temperature " + Temp + " celcius and " + Clouds%></p>

@@ -73,6 +73,8 @@ public class Gettheweather {
 		NodeList nListclouds = doc.getElementsByTagName("clouds");
 		NodeList nListtemperature = doc.getElementsByTagName("temperature");
 		NodeList nListlastupdate = doc.getElementsByTagName("lastupdate");
+		NodeList nListweather = doc.getElementsByTagName("weather");
+
 
 		///////////// CLOUDS
 		for (int i = 0; i < nListclouds.getLength(); i++) {
@@ -88,6 +90,25 @@ public class Gettheweather {
 				//System.out.println("clouds " + wBean.getCityStr() + " is now a " + XMLclouds);
 				// save it
 				wBean.setCloudsStr(XMLclouds);
+
+			}
+
+		}
+		
+		///////////// ICON
+		for (int i = 0; i < nListweather.getLength(); i++) {
+			// Save a node of the current list id
+			Node node = nListweather.item(i);
+			if (node.getNodeType() == Node.ELEMENT_NODE) {
+
+				// set the current node as an Element
+				Element eElement = (Element) node;
+				// get the content of an attribute in element
+				String XMLweather = eElement.getAttribute("icon");
+				// and print it
+				//System.out.println("clouds " + wBean.getCityStr() + " is now a " + XMLweather);
+				// save it
+				wBean.setIcon(XMLweather);
 
 			}
 
