@@ -41,36 +41,6 @@ if(cookies[i].getName().equals("stad")){
 	</nav>
 
 
-<!--
-	<div class="container">
-		<form action="OWservlet" method="get">
-			<div class="row justify-content-md-center">
-
-				<div class="col-4">
-					<input type="text" class="form-control" placeholder="City"
-						aria-label="City" name="city">
-				</div>
-				
-				<div class="col-4">
-					<input type="text" class="form-control" placeholder="Country"
-						aria-label="Country" name="country">
-				</div>
-
-			</div>
-			
-			
-			<div class="row justify-content-md-center">
-				<div class="col-5"></div>
-				<div class="col-2">
-					<input class="btn btn-primary" type="submit" value="Check weather"  />
-				</div>
-				<div class="col-5"></div>
-			</div>
-		</form>
-
-	</div>
-	
--->
 
 	    <div class="container">
         <div class="row">

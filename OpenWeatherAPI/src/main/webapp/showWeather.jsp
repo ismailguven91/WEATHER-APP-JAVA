@@ -35,48 +35,10 @@
 	String Temp = wBean.getTemp();
 	String Clouds = wBean.getCloudsStr();
 	String Icon = wBean.getIcon();
+	String IconNumber = wBean.getIconNumber();
+	String IconValue = wBean.getIconValue();
 	%>
 
-<!--
-	<div class="container">
-		<div class="col">
-			<h1><%=Country + "/" + City%></h1>
-
-		</div>
-
-
-		<form action="OWservlet" method="get">
-			<div class="row justify-content-md-center">
-
-				<div class="col-3">
-					<input type="text" class="form-control" placeholder="City"
-						aria-label="City" name="city">
-				</div>
-				<div class="col-3">
-					<input type="text" class="form-control" placeholder="Country"
-						aria-label="Country" name="country">
-				</div>
-
-			</div>
-			<div class="row justify-content-md-center">
-				<div class="col-5"></div>
-				<div class="col-2">
-					<input class="btn btn-primary" type="submit" value="Check weather" />
-				</div>
-				<div class="col-5"></div>
-			</div>
-		</form>
-
-	</div>
-	<div class="card" style="width: 18rem;">
-		<img src="img/sun.jpg" class="card-img-top" alt="sun.jpg">
-		<div class="card-body">
-			<h3><%="Weather in " + City%></h3>
-			<p class="card-text"><%="Temperature " + Temp + " celcius and " + Clouds%></p>
-			<h4><%=Time%></h4>
-		</div>
-	</div>
-	 -->
 	
 	    <div class="container">
         <div class="row">
@@ -100,7 +62,7 @@
           <div class="col">
             <div class="card" style="width: 18rem;">
                 <img src="img/sun.jpg" class="card-img-top" alt="sun.jpg">
-                <%=Icon %>
+                <%=Icon + IconNumber + IconValue%>
                 <div class="card-body">
 			<h3><%="Weather in " + City%></h3>
 			<p class="card-text"><%="Temperature " + Temp + " celcius and " + Clouds%></p>
